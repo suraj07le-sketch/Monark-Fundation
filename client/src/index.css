@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@theme {
+  --color-primary: #f05a22;
+  /* Monark Orange */
+  --color-secondary: #0b2545;
+  /* Monark Navy */
+  --color-accent: #f05a22;
+  --color-success: #116600;
+  --color-danger: #d32f2f;
+  --color-info: #4c79dc;
+  --color-light: #ffffff;
+  --color-dark: #1a1a1a;
+  --color-grid: #e5e7eb;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  /* New Serif for Headings */
+  --font-heading: 'Playfair Display', serif;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-spin-slow: spin 12s linear infinite;
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+@layer base {
+  body {
+    @apply bg-white text-dark font-sans antialiased overflow-x-hidden;
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
+  }
+
+  .glass {
+    @apply bg-white/90 backdrop-blur-md border border-white/20 shadow-sm;
+  }
+
+  /* Typography System */
+  .type-display {
+    @apply font-sans font-bold text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight text-dark;
+  }
+
+  .type-h1 {
+    @apply font-sans font-bold text-4xl md:text-5xl leading-tight text-dark;
+  }
+
+  .type-h2 {
+    @apply font-sans font-semibold text-3xl md:text-4xl leading-snug text-dark;
+  }
+
+  .type-h3 {
+    @apply font-sans font-semibold text-2xl leading-snug text-dark;
+  }
+
+  .type-body-lg {
+    @apply font-sans text-lg leading-relaxed text-gray-600;
+  }
+
+  .type-body {
+    @apply font-sans text-base leading-relaxed text-gray-600;
+  }
+
+  /* Corporate Cards */
+  .card-corporate {
+    @apply bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-accent text-white font-semibold py-3 px-8 rounded-full hover:bg-orange-600 transition-colors duration-300 shadow-lg shadow-orange-500/20;
+  }
+
+  .btn-outline {
+    @apply bg-transparent border-2 border-primary text-primary font-semibold py-3 px-8 rounded-full hover:bg-primary hover:text-white transition-colors duration-300;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
