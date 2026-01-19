@@ -1,13 +1,14 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Navbar from '../../components/Layout/Navbar';
 import Footer from '../../components/Layout/Footer';
 import { ArrowRight, BookOpen, Users, Award, Building2, ChevronRight } from 'lucide-react';
 
 const LandingPage = () => {
     return (
         <div className="font-sans text-dark bg-grid-pattern min-h-screen">
-
+            <Navbar />
             {/* FIXED APPLY NOW SIDE TAB */}
             <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 hidden lg:block">
                 <button className="bg-secondary text-white font-bold py-6 px-2 rounded-l-lg shadow-lg [writing-mode:vertical-lr] hover:bg-primary transition-colors tracking-widest text-sm uppercase">

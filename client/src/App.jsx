@@ -21,35 +21,47 @@ import CampusLife from './pages/Public/CampusLife';
 import Contact from './pages/Public/Contact';
 
 import FacultyDashboard from './pages/Dashboard/FacultyDashboard';
-// Placeholder Dashboard for root dashboard view
-const Dashboard = () => <div className="p-10 text-2xl font-bold">Welcome to Monark Portal</div>;
+import DashboardHome from './pages/Dashboard/DashboardHome';
+import StudentDashboard from './pages/Dashboard/StudentDashboard';
+import GenericPage from './pages/Public/GenericPage';
+
+// ... (other imports)
 
 function App() {
   return (
     <Router>
       <AuthProvider>
         <Routes>
-          {/* Public Routes */}
           <Route path="/" element={<LandingPage />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/about" element={<About />} />
           <Route path="/admission" element={<Admission />} />
+          <Route path="/faculty" element={<Faculty />} />
           <Route path="/academic" element={<Academic />} />
           <Route path="/placement" element={<Placement />} />
           <Route path="/campus-life" element={<CampusLife />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/faculty" element={<Faculty />} />
 
-          {/* Protected Routes */}
-
-          // ... inside Routes
+          {/* Secondary Pages */}
+          <Route path="/leadership" element={<GenericPage title="Leadership" />} />
+          <Route path="/mission" element={<GenericPage title="Vision & Mission" />} />
+          <Route path="/fees" element={<GenericPage title="Fee Structure" />} />
+          <Route path="/scholarships" element={<GenericPage title="Scholarships" />} />
+          <Route path="/research" element={<GenericPage title="Research & Innovation" />} />
+          <Route path="/programs" element={<GenericPage title="Academic Programs" />} />
+          <Route path="/academic-calendar" element={<GenericPage title="Academic Calendar" />} />
+          <Route path="/recruiters" element={<GenericPage title="Our Recruiters" />} />
+          <Route path="/clubs" element={<GenericPage title="Student Clubs" />} />
+          <Route path="/library" element={<GenericPage title="Library" />} />
+          <Route path="/labs" element={<GenericPage title="Laboratories" />} />
+          <Route path="/disclosure" element={<GenericPage title="Public Self-Disclosure" />} />
           <Route
             path="/dashboard"
             element={
               <ProtectedRoute>
                 <MainLayout>
-                  <Dashboard />
+                  <DashboardHome />
                 </MainLayout>
               </ProtectedRoute>
             }
@@ -110,6 +122,18 @@ function App() {
               <ProtectedRoute>
                 <MainLayout>
                   <Gallery />
+                </MainLayout>
+              </ProtectedRoute>
+            }
+          />
+
+
+          <Route
+            path="/student-dashboard"
+            element={
+              <ProtectedRoute>
+                <MainLayout>
+                  <StudentDashboard />
                 </MainLayout>
               </ProtectedRoute>
             }

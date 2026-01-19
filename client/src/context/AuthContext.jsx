@@ -18,10 +18,15 @@ export const AuthProvider = ({ children }) => {
             const token = localStorage.getItem('token');
             if (token) {
                 api.defaults.headers.common['x-auth-token'] = token;
-                // Ideally, verify token with backend here
-                // For now, we assume if token exists, user is logged in (simplified)
-                // In production, fetch user data from /api/auth/user
-                setUser({ token }); // Placeholder
+                try {
+                    const res = await api.get('/auth/me');
+                    setUser(res.data);
+                } catch (error) {
+                    console.error("Auth check failed", error);
+                    localStorage.removeItem('token');
+                    delete api.defaults.headers.common['x-auth-token'];
+                    setUser(null);
+                }
                 setLoading(false);
             } else {
                 setLoading(false);

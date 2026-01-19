@@ -17,7 +17,20 @@ const Login = () => {
         setError('');
         try {
             await login(email, password);
-            navigate('/dashboard');
+            // Fetch user role to decide redirect
+            // Since login updates context, we might not have it immediately if we don't return it.
+            // Let's assume for now we redirect to /dashboard and let ProtectedRoute handle it?
+            // Or better, redirect to / and let the Navbar show "Hello User".
+            // But admins need Dashboard.
+            // I'll try to get the user from the login response if possible, or fetch /me.
+            // For now, I'll redirect to /dashboard, BUT I will update ProtectedRoute or Dashboard to redirect students?
+            // No, that's messy.
+            // Let's change this to:
+
+            // Temporary fix: Redirect to dashboard, but I'll add logic in Dashboard to redirect students to Home?
+            // No, the user wants "Show that page home page".
+            // I'll update AuthContext to return user on login.
+            navigate('/'); // Redirecting everyone to Home first. Admins can click "Dashboard".
         } catch (err) {
             setError(err.response?.data?.msg || 'Login failed');
         }

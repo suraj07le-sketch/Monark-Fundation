@@ -1,8 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const { register, login, getUsers, updateUserRole } = require('../controllers/authController');
+const { register, login, getUsers, updateUserRole, getMe } = require('../controllers/authController');
 const auth = require('../middleware/auth');
 const admin = require('../middleware/admin');
+
+// @route   GET api/auth/me
+// @desc    Get current user
+// @access  Private
+router.get('/me', auth, getMe);
 
 // @route   POST api/auth/register
 // @desc    Register user
